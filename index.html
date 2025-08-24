@@ -1,62 +1,126 @@
-<a href="https://www.amazon.in" target="_blank">back to amazon<a/>
-<style>
-.text{
-font-weight:bold;
-font-size:30px;
-}
+import turtle
+import random
+import time
+screen = turtle.Screen()
+screen.bgcolor("lightblue")
 
-.text2{
-color:rgb(0,118,0);
-font-weight:bold;
-font-size:20px;
-}
-</style>
-<p class="text">nike black running shoes</p>
-<img
-src="data:image/jpeg;base64,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"
-alt="Online Image" width="400"
-height="400">
-<p class="text2">39$-in stock</p>
-<p>free delivery tommorow</p>
-<style>
-.add{
-background-color:rgb(255,216,20);
-border-radius:18px;
-color:black;
-cursor:pointer;
-border:none;
-height:45px;
-width:150px;
-font-weight:bold;
-margin-right:8px;
-font-size:15px;
-transition:0.5s;
-}
-.add:hover{
-opacity:0.7;
-}
-.add:active{
-background-color:rgb(350,164,28);
-}
-.buy{
-background-color:rgb(255,164,28);
-border-radius:18px;
-cursor:pointer;
-font-size:15px;
-border:none;
-height:45px;
-width:150px;
-font-weight:bold;
-transition:0.5s;
-}
-.buy:hover{
-opacity:0.7;
-}
-.buy:active{
-background-color:yellow;
-transition:1s;
-}
 
-</style>
-<button class="add">Add to cart</button>
- <button class="buy">Buy now</button>
+player_one = turtle.Turtle()
+player_one.color("red")
+player_one.shape("turtle")
+
+player_two = turtle.Turtle()
+player_two.color("blue")
+player_two.shape("turtle")
+
+#position of the  players
+player_one.penup()
+player_one.goto(-300, 200)
+player_two.penup()
+player_two.goto(-300, -200)
+
+#lets draw the finish line
+player_one.goto(300, -250)
+player_one.left(90)
+player_one.pendown()
+player_one.pensize(5)
+player_two.pensize(5)
+player_one.color("black")
+player_one.fd(500)
+player_one.write("finish", font= "24", align= "right" )
+
+player_one.penup()
+player_one.color("red")
+player_one.goto(-300, 200)
+player_one.right(90)
+
+player_one.pendown()
+player_two.pendown()
+
+dice_turtle = turtle.Turtle()
+dice_turtle.hideturtle()
+dice_turtle.penup()
+dice_turtle.goto(0,-50)
+
+#values for die
+die = [1, 2, 3, 4, 5, 6]
+
+def darw_dice(number):
+    dice_turtle.clear()
+    dice_turtle.pendown()
+    dice_turtle.pensize(3)
+    dice_turtle.setheading(0)
+    for _ in range(4):
+        dice_turtle.fd(100)
+        dice_turtle.left(90)
+    dice_turtle.penup()
+
+    spots = {
+        1: [(50, 50)],
+        2: [(30, 70), (70, 30)],
+        3: [(30, 70), (50, 50), (70, 30)],
+        4: [(30, 70), (70,70), (30,30), (70,30)],
+        5: [(30, 70), (70, 70), (50, 50), (30, 30), (70,30)],
+        6: [(30,70), (70, 70), (30, 50), (70, 50), (30, 30), (70, 30)]
+    }
+    for (x,y) in spots[number]:
+        dice_turtle.goto(x, y)
+        dice_turtle.dot(20, "black")
+
+
+#lets create the game
+
+def roll_player_one():
+    roll = random.choice(die)
+    player_one.fd(20 * roll)
+    print(f"player one rolled {roll}")
+    check_winner()
+
+def roll_player_two():
+    roll = random.choice(die)
+    player_two.fd(20 * roll)
+    print(f"player two rolled {roll}")
+    check_winner()
+
+def check_winner():
+    if player_one.xcor() >=300:
+        print(f"player one wins")
+        screen.bye()
+    elif player_two.xcor() >=300:
+        print(f"player two wins")
+        screen.bye()
+
+button_drawer = turtle.Turtle()
+button_drawer.hideturtle()
+button_drawer.penup()
+
+
+
+def draw_button(x, y, text):
+    button_drawer.goto(x, y)
+    button_drawer.fillcolor("lightgrey")  # Set fill color before drawing
+    button_drawer.pendown()
+    button_drawer.begin_fill()
+    for _ in range(2):
+        button_drawer.fd(120)
+        button_drawer.right(90)
+        button_drawer.fd(50)
+        button_drawer.right(90)
+    button_drawer.end_fill()
+    button_drawer.penup()
+    button_drawer.goto(x + 60, y - 25)  # Move up a bit for better visibility
+    button_drawer.write(text, align="center", font=("arial", 14, "bold"))
+
+draw_button(-200, -100, "roll p1")
+draw_button(100, -100, "roll p2")    
+
+def click_handle(x, y):
+    if -200 <= x <= -80 and -150 <= y <= -100:
+        roll_player_one()
+    elif 100 <= x <= 220 and -150 <= y <= -100:
+        roll_player_two()
+
+screen.onclick(click_handle)        
+        
+    
+screen.mainloop()
